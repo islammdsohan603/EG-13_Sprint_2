@@ -1,19 +1,20 @@
+function groupAnagrams(strs) {
+  const map = new Map();
 
-// Flatten a Nested Array
+  for (let str of strs) {
 
-function flattenarray(arr) {
+    const key = str.split("").sort().join("");
 
-  let result = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (Array.isArray(arr[i])) {
-      result.push(...flattenarray(arr[i]));
+    if (!map.has(key)) {
+      map.set(key, []);
     }
-    else {
-      result.push(arr[i])
-    }
+
+    map.get(key).push(str);
   }
-  return result
 
+  return Array.from(map.values());
 }
 
-console.log(flattenarray([1, [2, [3, 4], 5]]))
+console.log(
+  groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
+);
