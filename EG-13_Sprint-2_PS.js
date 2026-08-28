@@ -1,15 +1,11 @@
+// Check for Palindrome
 
-// Find Maximum
 
-function findMax(nums) {
-  let max = nums[0];
-  for (let i = 1; i < nums.length; i++) {
-    if (nums[i] > max) {
-      max = nums[i]
-    }
-  }
+function isPalindrome(str) {
 
-  return max
+  let reversed = str.split("").reverse().join("");
+  return str === reversed
+
 }
 
-console.log(findMax([2, 7, 2, 9, 5]))
+console.log(isPalindrome("racecar"))
