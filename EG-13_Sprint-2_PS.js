@@ -1,17 +1,17 @@
 
 
-// Sum Array Elements
+//Count Vowels
 
+function countVowels(str) {
 
-function sumArray(nums) {
-
-  let sum = 0;
-  for (let i = 0; i < nums.length; i++) {
-    sum += nums[i];
+  let count = 0;
+  const vowels = 'aeiou';
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i])) {
+      count++
+    }
   }
-
-  return sum
-
+  return count
 }
 
-console.log(sumArray([10, 20, 30, 40]))
+console.log(countVowels("javascript"))
