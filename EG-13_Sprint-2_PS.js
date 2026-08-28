@@ -1,11 +1,17 @@
-// Check for Palindrome
 
 
-function isPalindrome(str) {
+// Sum Array Elements
 
-  let reversed = str.split("").reverse().join("");
-  return str === reversed
+
+function sumArray(nums) {
+
+  let sum = 0;
+  for (let i = 0; i < nums.length; i++) {
+    sum += nums[i];
+  }
+
+  return sum
 
 }
 
-console.log(isPalindrome("racecar"))
+console.log(sumArray([10, 20, 30, 40]))
