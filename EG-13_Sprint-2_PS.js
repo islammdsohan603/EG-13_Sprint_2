@@ -1,14 +1,19 @@
 
-// Two Sum
+// Flatten a Nested Array
 
-function twoSum(nums, target) {
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target) {
-        return [i, j];
-      }
+function flattenarray(arr) {
+
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      result.push(...flattenarray(arr[i]));
+    }
+    else {
+      result.push(arr[i])
     }
   }
+  return result
+
 }
 
-console.log(twoSum([2, 7, 11, 15], 9))
+console.log(flattenarray([1, [2, [3, 4], 5]]))
