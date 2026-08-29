@@ -1,23 +1,17 @@
-// Longest Substring Without Repeating Characters
+// Deep Clone an Object
 
-function lengthOfLongestSubstring(s) {
-  let left = 0;
-  let maxLength = 0;
-  const seen = new Set();
+function deepClone(obj) {
+  const clone = {};
 
-  for (let i = 0; i < s.length; i++) {
-
-    while (seen.has(s[i])) {
-      seen.delete(s[left]);
-      left++;
+  for (let key in obj) {
+    if (typeof obj[key] === "object") {
+      clone[key] = deepClone(obj[key]);
+    } else {
+      clone[key] = obj[key];
     }
-
-    seen.add(s[i]);
-
-    maxLength = Math.max(maxLength, i - left + 1);
   }
 
-  return maxLength;
+  return clone;
 }
 
-console.log(lengthOfLongestSubstring("abcabcbb"));
+console.log(deepClone({ a: 1, b: { c: 2 } }));
