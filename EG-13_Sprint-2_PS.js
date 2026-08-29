@@ -1,20 +1,23 @@
-function groupAnagrams(strs) {
-  const map = new Map();
+// Longest Substring Without Repeating Characters
 
-  for (let str of strs) {
+function lengthOfLongestSubstring(s) {
+  let left = 0;
+  let maxLength = 0;
+  const seen = new Set();
 
-    const key = str.split("").sort().join("");
+  for (let i = 0; i < s.length; i++) {
 
-    if (!map.has(key)) {
-      map.set(key, []);
+    while (seen.has(s[i])) {
+      seen.delete(s[left]);
+      left++;
     }
 
-    map.get(key).push(str);
+    seen.add(s[i]);
+
+    maxLength = Math.max(maxLength, i - left + 1);
   }
 
-  return Array.from(map.values());
+  return maxLength;
 }
 
-console.log(
-  groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
-);
+console.log(lengthOfLongestSubstring("abcabcbb"));
